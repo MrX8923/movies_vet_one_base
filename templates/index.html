@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block menu %}
+    <ul>
+        <li class="menu navbar-link"><a href="{% url 'all_movies' %}">Фильмы</a>
+        <li class="menu navbar-link"><a href="">Актеры</a>
+        <li class="menu navbar-link"><a href="">Режиссеры</a>
+        <li class="menu navbar-link"><a href="">Подписка</a>
+    </ul>
+{% endblock menu %}
+
+{% block content %}
+    <h2>На сайте {{ movies_count }} фильмов</h2>
+    <h2>На сайте {{ actors_count }} актеров</h2>
+    <h2>На сайте {{ free_count }} фильмов бесплатно</h2>
+{% endblock content %}

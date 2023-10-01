@@ -1,0 +1,107 @@
+body {
+  font-family: "Century Gothic", "Times New Roman", sans-serif;
+  font-size: large;
+  color: goldenrod;
+  text-shadow: 3px 3px 6px black;
+  /*background-image: url("../img/fon.jpg");*/
+  background-color: black;
+  background-attachment: fixed;
+  background-repeat: repeat;
+}
+
+.menu {
+  display: inline-block;
+  max-width: 310px;
+  margin: 0.5%;
+  padding: 0.5%;
+  background-color: darkslategray;
+  color: goldenrod;
+  border: double 5px goldenrod;
+  border-radius: 30%;
+  transition: linear 0.6s;
+  box-shadow: black 3px 3px 7px;
+}
+
+.menu:hover {
+  border-radius: 50%;
+  color: red;
+  background-color: white;
+  border: double 5px red;
+  text-shadow: red 0 0 35px;
+  box-shadow: red 0 0 35px;
+  scale: 1.15;
+}
+
+.menu a {
+  text-decoration: none;
+  color: goldenrod;
+}
+
+.menu a:hover {
+  scale: 1.15;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.form-block {
+  padding: 10px;
+  max-width: 360px;
+  border-radius: 5%;
+  border: goldenrod solid 3px;
+  background-color: darkslategray;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
+}
+
+.sub-button {
+  display: inline-block;
+  display: -moz-inline-block;
+  margin: auto;
+  width: 30%;
+}
+
+input {
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: black 3px 3px 7px;
+}
+
+.errorlist {
+  margin: 0;
+  padding: 0;
+  max-width: 50%;
+  font-size: x-small;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
+  list-style-type: none;
+}
+
+.errors input {
+  border-color: red;
+  background-color: #ffb3b3;
+}
+
+.errors label{
+  color: #ff0000;
+  font-size: x-large;
+}
+
+.thanks-cont {
+  max-width: 500px;
+  border-radius: 5%;
+  color: wheat;
+  border: goldenrod solid 3px;
+  background-color: darkslategray;
+}
+
+.important {
+  color: goldenrod;
+  font-weight: bold;
+}

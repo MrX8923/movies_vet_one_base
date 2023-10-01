@@ -6,9 +6,9 @@
 {% block content %}
     <h2>Каталог фильмов</h2>
     <ul>
-        {% for movie in movie_list %}
+        {% for movie in movies %}
             <li>
-                <a href="{% url 'info' id=movie.id %}">{{ movie.title }}</a>
+                <a href="{% url 'info' pk=movie.id %}">{{ movie.title }}</a>
                 <p>{{ movie.title }}</p>
             </li>
         {% endfor %}

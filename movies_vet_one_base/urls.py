@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from vet_clinic.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
+    path('pets/', ListPets.as_view(), name='all_pets'),
+    path('pets/<slug:pk>', DetailPet.as_view(), name='pet'),
 ]

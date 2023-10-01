@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <ul>
+        {% for pet in pets %}
+            <li><a href="{% url 'pet' pk=pet.id %}">{{ pet.name }}</a></li>
+            <li>{{ pet.animal_type }}</li>
+            <li>
+                {% if pet.menace %}
+                    Опасный
+                {% else %}
+                    Неопасный
+                {% endif %}
+            </li>
+            <li>{{ pet.pet_owner }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

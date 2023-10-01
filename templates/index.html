@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block menu %}
+    <ul>
+        <li class="menu navbar-link"><a href="{% url 'all_pets' %}">Звери</a>
+        <li class="menu navbar-link"><a href="">Хозяевы</a>
+        <li class="menu navbar-link"><a href="">Специалисты</a>
+        <li class="menu navbar-link"><a href="">Лечение</a>
+    </ul>
+{% endblock menu %}
+
+{% block content %}
+    <h2>На сайте {{ animals_count }} зверей</h2>
+    <h2>На сайте {{ owners_count }} владельцев</h2>
+    <h2>На сайте {{ specs_count }} специалистов</h2>
+{% endblock content %}

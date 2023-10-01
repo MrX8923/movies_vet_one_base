@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h2>{{ pet.name }}</h2>
+    <h3>Вид животного: {{ pet.animal_type }}</h3>
+    <h3>Владелец: {{ pet.pet_owner }}</h3>
+    <h3>Опасность: {% if pet.menace %}
+        Да
+        {% else %}
+        Нет
+    {% endif %} </h3>
+    <h3>Возраст: {{ pet.age }}</h3>
+    <h3>Лечащий врач: {{ pet.specialist.speciality }} {{ pet.specialist }}</h3>
+    <h3>Лечение: {{ pet.treatment }}</h3>
+{% endblock %}

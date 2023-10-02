@@ -8,14 +8,20 @@
 
 {% block menu %}
     <ul>
+        <li class="menu navbar-link"><a href="{% url 'home' %}">Главная</a>
         <li class="menu navbar-link"><a href="{% url 'all_movies' %}">Фильмы</a>
         <li class="menu navbar-link"><a href="">Актеры</a>
         <li class="menu navbar-link"><a href="">Режиссеры</a>
         <li class="menu navbar-link"><a href="">Подписка</a>
+        <li class="menu navbar-link"><a href="{% url 'login' %}">Log in</a>
+        <li class="menu navbar-link"><a href="{% url 'logout' %}">Log Out</a>
     </ul>
 {% endblock menu %}
 
 {% block content %}
+{#    {% if username %}#}
+        <h1>Hi, {{ username }}!</h1>
+{#    {% endif %}#}
     <h2>На сайте {{ movies_count }} фильмов</h2>
     <h2>На сайте {{ actors_count }} актеров</h2>
     <h2>На сайте {{ free_count }} фильмов бесплатно</h2>

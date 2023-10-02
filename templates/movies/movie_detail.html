@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% load static %}
 
 
 {% block content %}
-    <h2>{{ movie.title}}</h2>
+    <h2>"{{ movie.title}}"</h2>
     <h3>Режиссер: {{ movie.director }}</h3>
     <h3>Год: {{ movie.year }}</h3>
-    <h3>Актеры: {{ movie.display_actors }}</h3>
-{% endblock content%}
+    <h3>Актеры:</h3>
+    {% for actor in movie.actors.all %}
+        <h4>{{ actor }}</h4>
+    {% endfor %}
+{% endblock content %}

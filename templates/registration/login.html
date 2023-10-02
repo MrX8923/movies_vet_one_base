@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block menu %}
+
+{% endblock %}
+{% block content %}
+    <h2>Enter</h2>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <button type="submit">SEND</button>
+    </form>
+{% endblock %}

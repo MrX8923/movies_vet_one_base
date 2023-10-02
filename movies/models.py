@@ -91,7 +91,7 @@ class Movie(models.Model):
     display_actors.short_description = 'Актеры'
 
     def get_absolute_url(self):
-        return reverse('info', args=[self.id])
+        return reverse('info', args=[self.id, self.title])
 
 
 models_tuple = (Genre, Country, AgeRating, Subscription)

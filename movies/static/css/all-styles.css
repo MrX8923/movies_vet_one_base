@@ -2,6 +2,7 @@ body {
   font-family: "Century Gothic", "Times New Roman", sans-serif;
   font-size: large;
   color: goldenrod;
+  margin: 20px;
   text-shadow: 3px 3px 6px black;
   /*background-image: url("../img/fon.jpg");*/
   background-color: black;

@@ -24,7 +24,7 @@ class MovieTable(admin.ModelAdmin):
     fieldsets = (
         ('О фильме', {'fields': ('title', 'summary', 'actors')}),
         ('Рейтинг', {'fields': ('rating', 'age_rating', 'subscription')}),
-        ('Остальное', {'fields': ('director', 'genre', 'year', 'country')})
+        ('Остальное', {'fields': ('director', 'genre', 'year', 'country', 'poster')})
     )
 
 

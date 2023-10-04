@@ -69,7 +69,7 @@ class Subscription(models.Model):
 
 
 class Movie(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, verbose_name='Название')
     genre = models.ForeignKey(Genre, on_delete=models.SET_DEFAULT, default=1)
     rating = models.FloatField()
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
@@ -79,6 +79,7 @@ class Movie(models.Model):
     age_rating = models.ForeignKey(AgeRating, on_delete=models.SET_DEFAULT, default=1)
     actors = models.ManyToManyField(Actor)
     subscription = models.ForeignKey(Subscription, on_delete=models.SET_DEFAULT, default=1)
+    poster = models.CharField(max_length=100, null=True, blank=True, verbose_name='Постер')
 
     def __str__(self):
         return self.title

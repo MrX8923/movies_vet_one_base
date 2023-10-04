@@ -35,3 +35,37 @@ class DetailMovie(generic.DetailView):
     template_name = 'movies/movie_detail.html'
     context_object_name = 'movie'
     extra_context = {'title': 'Фильм'}
+
+
+class ListActors(generic.ListView):
+    model = Actor
+    template_name = 'movies/actor_list.html'
+    context_object_name = 'actors'
+    extra_context = {'title': 'Актеры'}
+
+
+class DetailActor(generic.DetailView):
+    model = Actor
+    template_name = 'movies/actor_detail.html'
+    context_object_name = 'actor'
+
+
+def subscription(request):
+    data = {
+        'subscriptions': Subscription.objects.all(),
+    }
+    return render(request, 'subscription.html', context=data)
+
+
+def see_movie(request, id1, id2, id3):
+    arr = ['бесплатно', 'базовая', 'СУПЕР']
+    arr2 = ['free', 'based', 'super']
+    if id3 == 0:
+        sub = 1
+    else:
+        sub = User.objects.get(id=id3).groups.all()[0].id
+    if sub >= id2:
+        print('ok')
+    else:
+        print('neok')
+    return render(request, 'index.html')

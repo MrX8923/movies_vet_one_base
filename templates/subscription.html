@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Подписка</h2>
+    {% for subscription in subscriptions %}
+        <h2 class="gold">{{ subscription.name }}</h2>
+        <div class="white">
+        {% for movie in subscription.movie_set.all %}
+            <div class="card" style="background-image: url('{% static movie.poster %}'); background-size: 100%">
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.summary }}</p>
+                {% if not user.username %}
+                    <a href="{% url 'see_movie' movie.id subscription.id 0 %}"><button>SEE</button></a>
+                    {% else %}
+                    <a href="{% url 'see_movie' movie.id subscription.id user.id %}"><button>SEE</button></a>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock %}

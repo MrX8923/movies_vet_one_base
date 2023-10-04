@@ -106,3 +106,31 @@ input {
   color: goldenrod;
   font-weight: bold;
 }
+
+.white {
+  color: black;
+  border-radius: 5px;
+  margin: 2%;
+  display: flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+
+.card {
+  text-align: center;
+  border: 2px solid goldenrod;
+  color: white;
+  width: 20%;
+  min-height: 300px;
+}
+
+
+.gold {
+  background-color: goldenrod;
+  color: white;
+}

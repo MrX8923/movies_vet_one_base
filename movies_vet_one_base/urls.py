@@ -25,4 +25,8 @@ urlpatterns = [
     path('movies/', ListMovies.as_view(), name='all_movies'),
     # path('movie/<int:id>', info, name='info'),
     path('movie/<int:pk>/<str:title>', DetailMovie.as_view(), name='info'),
+    path('actors/', ListActors.as_view(), name='all_actors'),
+    path('actor/<int:pk>/<str:actor>', DetailActor.as_view(), name='info_actor'),
+    path('subscription/', subscription, name='subscription'),
+    path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie')
 ]

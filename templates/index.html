@@ -10,11 +10,14 @@
     <ul>
         <li class="menu navbar-link"><a href="{% url 'home' %}">Главная</a>
         <li class="menu navbar-link"><a href="{% url 'all_movies' %}">Фильмы</a>
-        <li class="menu navbar-link"><a href="">Актеры</a>
+        <li class="menu navbar-link"><a href="{% url 'all_actors' %}">Актеры</a>
         <li class="menu navbar-link"><a href="">Режиссеры</a>
-        <li class="menu navbar-link"><a href="">Подписка</a>
-        <li class="menu navbar-link"><a href="{% url 'login' %}">Log in</a>
-        <li class="menu navbar-link"><a href="{% url 'logout' %}">Log Out</a>
+        <li class="menu navbar-link"><a href="{% url 'subscription' %}">Подписка</a>
+        {% if not user.username %}
+            <li class="menu navbar-link"><a href="{% url 'login' %}">Log in</a>
+        {% else %}
+            <li class="menu navbar-link"><a href="{% url 'logout' %}">Log Out</a>
+        {% endif %}
     </ul>
 {% endblock menu %}
 

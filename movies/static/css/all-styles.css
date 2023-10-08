@@ -10,36 +10,15 @@ body {
   background-repeat: repeat;
 }
 
-.menu {
-  display: inline-block;
-  max-width: 310px;
-  margin: 0.5%;
-  padding: 0.5%;
-  background-color: darkslategray;
-  color: goldenrod;
-  border: double 5px goldenrod;
-  border-radius: 30%;
-  transition: linear 0.6s;
-  box-shadow: black 3px 3px 7px;
+.menu-bar {
+  width: 80%;
+  margin: 2% auto;
 }
 
-.menu:hover {
-  border-radius: 50%;
-  color: red;
-  background-color: white;
-  border: double 5px red;
-  text-shadow: red 0 0 35px;
-  box-shadow: red 0 0 35px;
-  scale: 1.15;
-}
-
-.menu a {
+.menu-bar a {
   text-decoration: none;
   color: goldenrod;
-}
 
-.menu a:hover {
-  scale: 1.15;
 }
 
 ul {
@@ -126,7 +105,7 @@ input {
   border: 2px solid goldenrod;
   color: white;
   width: 20%;
-  min-height: 300px;
+  min-height: 280px;
 }
 
 

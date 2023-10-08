@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {{ actor.movie_set.get.title }}
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h2>{{ actor }}</h2>
+    {% for movie in actor.movie_set.all %}
+        <p>{{ movie }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<ul>
-{% for actor in actors %}
-    <li><a href="{% url 'info_actor' pk=actor.id actor=actor %}">{{ actor }}</a></li>
-{% endfor %}
-</ul>
+{% extends 'index.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block content %}
+    <ul>
+        {% for actor in actors %}
+            <li><a href="{% url 'info_actor' pk=actor.id actor=actor %}">{{ actor }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -14,22 +14,22 @@
                 </li>
             {% endfor %}
         </ul>
-    {% if is_paginated %}
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a class="page-a" href="?page=1">&laquo; Первая</a>
-                    <a class="page-a" href="?page={{ page_obj.previous_page_number }}">Пред.</a>
-                {% endif %}
-                <span class="current page-text">
-                    Стр. {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a class="page-a" href="?page=1">&laquo; Первая</a>
+                        <a class="page-a" href="?page={{ page_obj.previous_page_number }}">Пред.</a>
+                    {% endif %}
+                    <span class="current page-text">
+                        Стр. {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a class="page-a" href="?page={{ page_obj.next_page_number }}">След.</a>
+                        <a class="page-a" href="?page={{ page_obj.paginator.num_pages }}">Послед. &raquo;</a>
+                    {% endif %}
                 </span>
-                {% if page_obj.has_next %}
-                    <a class="page-a" href="?page={{ page_obj.next_page_number }}">След.</a>
-                    <a class="page-a" href="?page={{ page_obj.paginator.num_pages }}">Послед. &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
-    {% endif %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

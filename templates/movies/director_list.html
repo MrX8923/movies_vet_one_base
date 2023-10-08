@@ -4,15 +4,16 @@
 
 {% block content %}
     <div class="person-cont">
-        <h2>Актеры:</h2>
+        <h2>Режиссёры:</h2>
         <ul>
-            {% for actor in actors %}
+            {% for director in directors %}
                 <li class="person-li">
-                    <a class="person-a" href="{% url 'info_actor' pk=actor.id actor=actor %}">{{ actor }}</a>
+                    <a class="person-a" href="{% url 'info_director' pk=director.id director=director %}">
+                        {{ director }}
+                    </a>
                 </li>
             {% endfor %}
         </ul>
-
     {% if is_paginated %}
         <div class="pagination">
             <span class="step-links">

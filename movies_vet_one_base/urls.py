@@ -27,6 +27,9 @@ urlpatterns = [
     path('movie/<int:pk>/<str:title>', DetailMovie.as_view(), name='info'),
     path('actors/', ListActors.as_view(), name='all_actors'),
     path('actor/<int:pk>/<str:actor>', DetailActor.as_view(), name='info_actor'),
+    path('directors/', ListDirectors.as_view(), name='all_directors'),
+    path('directors/<int:pk>/<str:director>', DetailDirector.as_view(), name='info_director'),
     path('subscription/', subscription, name='subscription'),
-    path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie')
+    path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie'),
+    path('make_db/', make_db, name='make_db')
 ]

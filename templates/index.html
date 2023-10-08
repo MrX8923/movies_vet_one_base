@@ -7,19 +7,28 @@
 {% endblock title %}
 
 {% block menu %}
-    <nav class="navbar navbar-expand-lg">
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar menu_bar">
-                <a class="nav-item navbar-link" href="{% url 'home' %}">Главная</a>
-                <a class="nav-item navbar-link" href="{% url 'all_movies' %}">Фильмы</a>
-                <a class="nav-item navbar-link" href="{% url 'all_actors' %}">Актеры</a>
-                <a class="nav-item navbar-link" href="">Режиссеры</a>
-                <a class="nav-item navbar-link" href="{% url 'subscription' %}">Подписка</a>
-                {% if not user.username %}
-                    <a class="nav-item navbar-link" href="{% url 'login' %}">Log in</a>
-                {% else %}
-                    <a class="nav-item navbar-link" href="{% url 'logout' %}">Log Out</a>
-                {% endif %}
+    <nav class="navbar navbar-expand-lg menu-bar">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'home' %}">Главная</a>
+                    <li class="nav-item">
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_movies' %}">Фильмы</a>
+                    <li class="nav-item">
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_actors' %}">Актеры</a>
+                    <li class="nav-item">
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_directors' %}">Режиссеры</a>
+                    <li class="nav-item">
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'subscription' %}">Подписка</a>
+                    {% if not user.username %}
+                        <li class="nav-item">
+                            <a class="nav-link active menu-a" href="{% url 'login' %}">Log in</a>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active menu-a" href="{% url 'logout' %}">Log Out</a>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>
@@ -27,9 +36,12 @@
 
 {% block content %}
 {#    {% if username %}#}
-        <h1>Hi, {{ username }}!</h1>
+        <h1>Привет, {{ username }}!</h1>
 {#    {% endif %}#}
     <h2>На сайте {{ movies_count }} фильмов</h2>
     <h2>На сайте {{ actors_count }} актеров</h2>
     <h2>На сайте {{ free_count }} фильмов бесплатно</h2>
+    {% if user.is_superuser %}
+        <a href="{% url 'make_db' %}"><button class="admin-button">Загрузить фильмы</button></a>
+    {% endif %}
 {% endblock content %}

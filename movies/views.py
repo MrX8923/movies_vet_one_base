@@ -2,14 +2,15 @@ from django.shortcuts import render, HttpResponse
 from django.views import generic
 from .models import *
 from django.contrib.auth.models import User
+from .db_maker import *
 
 
 def index(request):
     data = {
         'movies_count': Movie.objects.all().count(),
         'actors_count': Actor.objects.all().count(),
-        'free_count': Movie.objects.filter(subscription__movie=1).count(),
-        'username': request.user.first_name if hasattr(request.user, 'first_name') else 'Guest'
+        'free_count': Movie.objects.filter(subscription_id=1).count(),
+        'username': request.user.first_name if hasattr(request.user, 'first_name') else 'Гость'
     }
     # user = User.objects.create_user('User3', 'user3@mail.ru', 'useruser')
     # user.first_name = 'Vlad'
@@ -23,7 +24,7 @@ class ListMovies(generic.ListView):
     template_name = 'movies/movie_list.html'
     context_object_name = 'movies'
     extra_context = {'title': 'Фильмы'}
-    paginate_by = 1
+    paginate_by = 6
 
 # def info(request, id):
 #     movie = Movie.objects.using('movies').get(id=id)
@@ -42,12 +43,29 @@ class ListActors(generic.ListView):
     template_name = 'movies/actor_list.html'
     context_object_name = 'actors'
     extra_context = {'title': 'Актеры'}
+    paginate_by = 20
 
 
 class DetailActor(generic.DetailView):
     model = Actor
     template_name = 'movies/actor_detail.html'
     context_object_name = 'actor'
+    extra_context = {'title': 'Актер'}
+
+
+class ListDirectors(generic.ListView):
+    model = Director
+    template_name = 'movies/director_list.html'
+    context_object_name = 'directors'
+    extra_context = {'title': 'Режиссеры'}
+    paginate_by = 20
+
+
+class DetailDirector(generic.DetailView):
+    model = Director
+    template_name = 'movies/director_detail.html'
+    context_object_name = 'director'
+    extra_context = {'title': 'Режиссер'}
 
 
 def subscription(request):
@@ -68,4 +86,9 @@ def see_movie(request, id1, id2, id3):
         print('ok')
     else:
         print('neok')
+    return render(request, 'index.html')
+
+
+def make_db(request):
+    get_movies()
     return render(request, 'index.html')

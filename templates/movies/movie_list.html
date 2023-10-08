@@ -4,36 +4,36 @@
 
 
 {% block content %}
-    <h2>Каталог фильмов</h2>
-    <ul>
-        {% for movie in movies %}
-            <li>
-                <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
-                <p>{{ movie.genre  }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-    {% if is_paginated %}
-    <div class="pagination">
-    <span class="step-links">
-            {% if page_obj.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-
-
-
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-    </span>
-
-
-
-            {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">next</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-    </span>
+    <div class="movie-cont">
+        <h2>Каталог фильмов</h2>
+        <ul>
+            {% for movie in movies %}
+                <li style="display: inline-block">
+                    <a href="{{ movie.get_absolute_url }}">
+                        <div class="card" style="
+                            background-image: url('{% static movie.poster %}');
+                            background-repeat: no-repeat"></div>
+                    </a>
+                    <p style="text-align: center">{{ movie.genre  }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a class="page-a" href="?page=1">&laquo; Первая</a>
+                        <a class="page-a" href="?page={{ page_obj.previous_page_number }}">Пред.</a>
+                    {% endif %}
+                    <span class="current page-text">
+                        Стр. {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a class="page-a" href="?page={{ page_obj.next_page_number }}">След.</a>
+                        <a class="page-a" href="?page={{ page_obj.paginator.num_pages }}">Послед. &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
     </div>
-{% endif %}
 {% endblock content%}

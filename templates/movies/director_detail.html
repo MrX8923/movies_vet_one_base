@@ -4,15 +4,11 @@
 
 {% block content %}
     <div class="person-cont">
-        <h2>{{ actor }}</h2>
-        <table>
-            <tr><td>Дата рождения:</td><td>{{ actor.birthday }}</td></tr>
-            <tr><td>Cтрана:</td><td>{{ actor.country }}</td></tr>
-        </table>
+        <h2>{{ director }}</h2>
         <br>
         <h3>Фильмы у нас в коллекции:</h3>
         <div class="row">
-            {% for movie in actor.movie_set.all %}
+            {% for movie in director.movie_set.all %}
                 <div class="col">
                     <a href="{{ movie.get_absolute_url }}" class="page-a">
                         <div class="card" style="

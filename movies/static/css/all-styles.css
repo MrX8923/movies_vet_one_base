@@ -11,14 +11,18 @@ body {
 }
 
 .menu-bar {
-  width: 80%;
-  margin: 2% auto;
+  background-color: goldenrod;
+  border-radius: 20px;
 }
 
-.menu-bar a {
+.menu-a {
   text-decoration: none;
-  color: goldenrod;
+  font-size: 1em;
+  transition: linear 0.6s;
+}
 
+.menu-a:hover {
+  scale: 1.05;
 }
 
 ul {
@@ -104,12 +108,57 @@ input {
   text-align: center;
   border: 2px solid goldenrod;
   color: white;
-  width: 20%;
-  min-height: 280px;
+  margin: 2%;
+  min-height: 450px;
+  width: 300px;
 }
 
+.person-a, .page-a {
+  text-decoration: none;
+  color: goldenrod;
+  transition: linear 0.6s;
+}
+
+.person-cont, .movie-cont {
+  background-color: rgba(153, 153, 153, 0.2);
+  margin: 2%;
+  padding: 2%;
+  color: white;
+  border-radius: 20px;
+}
+
+.person-cont {
+  min-width: 30%;
+}
+
+.page-text {
+  color: white;
+}
+
+.person-a:hover, .page-a:hover {
+  color: red;
+  text-shadow: crimson 3px 3px 10px;
+  scale: 1.15;
+}
 
 .gold {
   background-color: goldenrod;
   color: white;
+}
+
+.admin-button {
+  background-color: goldenrod;
+  margin: 1%;
+  padding: 0.8%;
+  color: white;
+  border-radius: 20px;
+  border: white double 3px;
+  transition: linear 0.6s;
+}
+
+.admin-button:hover {
+  background-color: white;
+  color: red;
+  border: red double 3px;
+  box-shadow: red 0 0 20px;
 }

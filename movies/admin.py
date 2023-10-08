@@ -3,16 +3,16 @@ from .models import *
 
 
 class ActorTable(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'birthday', 'country')
-    list_display_links = ('name', 'surname', 'birthday')
+    list_display = ('firstname', 'lastname', 'birthday', 'country')
+    list_display_links = ('firstname', 'lastname', 'birthday')
 
 
 admin.site.register(Actor, ActorTable)
 
 
 class DirectorTable(admin.ModelAdmin):
-    list_display = ('name', 'surname')
-    list_display_links = ('name', 'surname')
+    list_display = ('firstname', 'lastname')
+    list_display_links = ('firstname', 'lastname')
 
 
 admin.site.register(Director, DirectorTable)

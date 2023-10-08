@@ -3,11 +3,22 @@
 {% load static %}
 
 {% block content %}
-    <h2>"{{ movie.title}}"</h2>
-    <h3>Режиссер: {{ movie.director }}</h3>
-    <h3>Год: {{ movie.year }}</h3>
-    <h3>Актеры:</h3>
-    {% for actor in movie.actors.all %}
-        <h4>{{ actor }}</h4>
-    {% endfor %}
+    <div class="person-cont row">
+        <div class="col card" style="
+                background-image: url('{% static movie.poster %}');
+                background-repeat: no-repeat;
+                max-width: 300px">
+        </div>
+        <div class="col p-3">
+            <h2>"{{ movie.title}}"</h2>
+            <h3>Режиссер: {{ movie.director }}</h3>
+            <h3>Год: {{ movie.year }}</h3>
+            <h3>Актеры:</h3>
+            {% for actor in movie.actors.all %}
+                <a class="person-a" href="{% url 'info_actor' pk=actor.id actor=actor %}">
+                    {{ actor }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

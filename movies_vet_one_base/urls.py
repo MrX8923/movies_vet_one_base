@@ -31,5 +31,5 @@ urlpatterns = [
     path('directors/<int:pk>/<str:director>', DetailDirector.as_view(), name='info_director'),
     path('subscription/', subscription, name='subscription'),
     path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie'),
-    path('make_db/', make_db, name='make_db')
+    path('make_db/', make_db, name='make_db'),
 ]

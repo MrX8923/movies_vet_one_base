@@ -5,8 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 
-from movies.models import *
-from movies.image_downloader import *
+from .models import *
+from .image_downloader import *
 
 TIME_PAUSE = 2
 MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
@@ -74,7 +74,8 @@ def get_movies():
     try:
         for i in range(1, 2):
             driver.get('https://www.kinopoisk.ru/lists/movies/top250/?page=' + str(i))
-            for n in range(0, 20):
+            time.sleep(5)
+            for n in range(0, 30):
                 movies = driver.find_elements(By.CLASS_NAME, 'styles_root__ti07r')
                 m = movies[n]
                 movie_title = m.find_element(By.CLASS_NAME, 'styles_mainTitle__IFQyZ')
@@ -142,10 +143,18 @@ def get_movies():
                                     and info_string.text.split('\n')[1] != '—':
                                 actor_country = info_string.text.split('\n')[1].split(', ')[-1]
                         actor = {'firstname': actor_firstname, 'lastname': actor_lastname}
+                        try:
+                            url = driver.find_element(By.CLASS_NAME, 'image').get_attribute('src')
+                        except:
+                            url = ''
+                        portrait_name = f'{actor_firstname}_{actor_lastname}'
+                        portrait_name = download_image_from_url(url, PORTRAIT_DIR, portrait_name)
                         if actor_country:
                             actor.update({'country': actor_country})
                         if actor_born:
                             actor.update({'birthday': actor_born})
+                        if url:
+                            actor.update({'portrait': f'{PORTRAIT_DIR_STATIC}/{portrait_name}.jpg'})
                         print('Актёр: ', actor)
                         actors.append(actor)
                         driver.back()

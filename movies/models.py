@@ -17,6 +17,7 @@ class Actor(models.Model):
     lastname = models.CharField(max_length=30, null=True, blank=True)
     birthday = models.DateField(max_length=30, null=True, blank=True)
     country = models.CharField(max_length=30, null=True, blank=True)
+    portrait = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return f'{self.firstname} {self.lastname}'
@@ -38,6 +39,7 @@ class Country(models.Model):
 class Director(models.Model):
     firstname = models.CharField(max_length=30, null=True, blank=True)
     lastname = models.CharField(max_length=30, null=True, blank=True)
+    portrait = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return f'{self.firstname} {self.lastname}'

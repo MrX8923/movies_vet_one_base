@@ -4,23 +4,30 @@
 
 {% block content %}
     <div class="person-cont">
-        <h2>{{ actor }}</h2>
-        <table>
-            <tr><td>Дата рождения:</td><td>{{ actor.birthday }}</td></tr>
-            <tr><td>Cтрана:</td><td>{{ actor.country }}</td></tr>
-        </table>
-        <br>
-        <h3>Фильмы у нас в коллекции:</h3>
-        <div class="row">
-            {% for movie in actor.movie_set.all %}
-                <div class="col">
-                    <a href="{{ movie.get_absolute_url }}" class="page-a">
-                        <div class="card" style="
-                                background-image: url('{% static movie.poster %}');
-                                background-repeat: no-repeat"></div>
-                    </a>
+        <div class="row"></div>
+            <div class="col-3">
+                <img src="{% static actor.portrait %}" alt="{{ actor }}">
+            </div>
+            <div class="col-8">
+                <h2>{{ actor }}</h2>
+                <table>
+                    <tr><td>Дата рождения:</td><td>{{ actor.birthday }}</td></tr>
+                    <tr><td>Cтрана:</td><td>{{ actor.country }}</td></tr>
+                </table>
+                <br>
+                <h3>Фильмы у нас в коллекции:</h3>
+                <div class="row">
+                    {% for movie in actor.movie_set.all %}
+                        <div class="col">
+                            <a href="{{ movie.get_absolute_url }}" class="page-a">
+                                <div class="card" style="
+                                        background-image: url('{% static movie.poster %}');
+                                        background-repeat: no-repeat"></div>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

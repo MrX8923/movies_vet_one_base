@@ -51,21 +51,3 @@ def download_image_from_url(url_address: str, image_dir: str = '../', image_name
         with open(f'{image_dir}/{image_name}.jpg', 'wb') as file:
             file.write(image)
         return image_name
-
-
-"""
-Пример использования для записи в базу Кино:
-
-Проще всего бросить в каталог приложения:
-from .image_downloader import *
-
-url = driver.find_element(By.CLASS_NAME, 'film-poster').get_attribute('src')
-image_name = title # от найденного фильма
-
-Для загрузки указываем путь без каталога static IMAGE_DIR. 
-За одно меняем название, чтобы не затереть файл с таким же именем:
-image_name = download_image_from_url(url_address=url, image_dir=IMAGE_DIR_STATIC, image_name=image_name)
-
-В базу пишем путь со static:
-poster = f'{IMAGE_DIR_STATIC}/{image_name}.jpg'
-"""

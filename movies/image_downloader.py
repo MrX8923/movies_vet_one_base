@@ -42,7 +42,6 @@ def download_image_from_url(url_address: str, image_dir: str = '../', image_name
         image_name = ''.join([choice(ascii_letters) for _ in range(20)])
         print(f'Ошибка: {exc} Запишем под новым: {image_name}.jpg')  # заменить на логер ошибок
 
-
     except FileNotFoundError:
         print(f'Нет файла "{image_name}.jpg", создаем новый!')  # заменить на логер ошибок
 

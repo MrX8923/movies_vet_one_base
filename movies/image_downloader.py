@@ -20,10 +20,12 @@ def download_image_from_url(url_address: str, image_dir: str = '../', image_name
     По умолчанию сохраняет image.jpg в корень проекта.
     Если файл с таким именем уже есть, возвращает рандомное название.
     """
-    # Убираем недопустимые и лишние символы в названии, а пробелы меняем на _:
+
     if not url_address:
         print('Не вышло скачать')
         return image_name
+
+    # Убираем недопустимые и лишние символы в названии, а пробелы меняем на _:
     for j in '()[]{},.;:-+=!?@#$%^&*/\\':
         if j in image_name:
             image_name = image_name.replace(j, '')

@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from django.views import generic
 from .models import *
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+from django.shortcuts import get_object_or_404
 from .db_maker import *
 
 
@@ -84,9 +85,27 @@ def see_movie(request, id1, id2, id3):
         sub = User.objects.get(id=id3).groups.all()[0].id
     if sub >= id2:
         print('ok')
+        permission = True
     else:
         print('neok')
-    return render(request, 'index.html')
+        permission = False
+    data = {
+        'movie': Movie.objects.get(id=id1),
+        'user_sub': Group.objects.get(id=sub).name,
+        'movie_sub': Movie.objects.get(id=id1).subscription,
+        'permission': permission
+    }
+    return render(request, 'see_movie.html', context=data)
+
+
+def buy_sub(request, type_sub):
+    user = get_object_or_404(User, pk=request.user.id)
+    user_sub_id = get_object_or_404(User, pk=request.user.id).groups.all()[0].id
+    get_object_or_404(Group, pk=user_sub_id).user_set.remove(user)
+    group = get_object_or_404(Group, pk=type_sub)
+    group.user_set.add(user)
+    data = {'subscription': group}
+    return render(request, 'buy_sub.html', data)
 
 
 def make_db(request):

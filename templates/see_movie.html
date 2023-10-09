@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <h3>Фильм {{ movie.title }}</h3>
+    <div style="
+        width: 500px;
+        height: 400px;
+        background-color: #222222;
+        border-radius: 20px;
+        padding: 10%;
+        text-align: center">
+    {% if permission %}
+        <p>Вы смотрите фильм</p>
+    {% else %}
+        <p>Недостаточный уровень подписки</p>
+        {% if user.is_authenticated %}
+            {% if use.groups.all.0.id < 3 %}
+                <a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+                <a class="page-a" href="{% url 'buy_sub' type_sub=2 %}">Купить базовую?</a>
+            {% else %}
+                <a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+            {% endif %}
+        {% else %}
+            <a class="page-a" href="{% url 'login' %}">Войти</a>
+        {% endif %}
+
+    {% endif %}
+    </div>
+    <h3>Ваша подписка {{ user_sub }}</h3>
+    <h3>Для фильма {{ movie_sub }}</h3>
+{% endblock %}

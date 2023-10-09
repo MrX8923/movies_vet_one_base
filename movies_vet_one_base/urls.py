@@ -32,4 +32,5 @@ urlpatterns = [
     path('subscription/', subscription, name='subscription'),
     path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie'),
     path('make_db/', make_db, name='make_db'),
+    path('buy_sub/<int:type_sub>', buy_sub, name='buy_sub')
 ]

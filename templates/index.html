@@ -18,15 +18,23 @@
                     <li class="nav-item">
                         <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_actors' %}">Актеры</a>
                     <li class="nav-item">
-                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_directors' %}">Режиссеры</a>
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'all_directors' %}">
+                            Режиссеры
+                        </a>
                     <li class="nav-item">
-                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'subscription' %}">Подписка</a>
-                    {% if not user.username %}
+                        <a class="nav-link active menu-a" aria-current="page" href="{% url 'subscription' %}">
+                            Подписка
+                        </a>
+                    {% if not user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link active menu-a" href="{% url 'login' %}">Log in</a>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link active menu-a" href="{% url 'logout' %}">Log Out</a>
+                            <a class="nav-link active menu-a" href="{% url 'user_profile' pk=user.id user=user %}">
+                                {{ user.username }}
+                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link active menu-a" href="{% url 'logout' %}">Log out</a>
                     {% endif %}
                 </ul>
             </div>
@@ -42,6 +50,6 @@
     <h2>На сайте {{ actors_count }} актеров</h2>
     <h2>На сайте {{ free_count }} фильмов бесплатно</h2>
     {% if user.is_superuser %}
-        <a href="{% url 'make_db' %}"><button class="admin-button">Загрузить фильмы</button></a>
+        <a href="{% url 'make_db' %}"><button class="admin-button">Загрузить фильмы в базу сайта</button></a>
     {% endif %}
 {% endblock content %}

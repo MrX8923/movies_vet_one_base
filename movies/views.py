@@ -111,3 +111,11 @@ def buy_sub(request, type_sub):
 def make_db(request):
     get_movies()
     return render(request, 'index.html')
+
+
+class DetailUser(generic.DetailView):
+    model = User
+    template_name = 'registration/user_profile.html'
+    extra_context = {'title': 'Профиль'}
+    context_object_name = 'user'
+

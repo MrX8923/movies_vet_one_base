@@ -15,7 +15,7 @@
     {% else %}
         <p>Недостаточный уровень подписки</p>
         {% if user.is_authenticated %}
-            {% if use.groups.all.0.id < 3 %}
+            {% if user.groups.all.0.id < 3 %}
                 <a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
                 <a class="page-a" href="{% url 'buy_sub' type_sub=2 %}">Купить базовую?</a>
             {% else %}

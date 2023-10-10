@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="person-cont">
+        <h2>Привет, {{ user.username.title }}!</h2>
+        <div class="row">
+            <div class="col">
+                <table>
+                    <caption style="caption-side: top; color: white">Данные профиля</caption>
+                    <tr><td>Имя:</td><td>{{ user.first_name }}</td></tr>
+                    <tr><td>Фамилия:</td><td>{{ user.last_name }}</td></tr>
+                    <tr><td>Email:</td><td>{{ user.email }}</td></tr>
+                    <tr><td>Подписка:</td><td>{{ user.groups.all.0 }}</td></tr>
+                </table>
+            </div>
+            <div class="col">
+                <div>
+                    {% if user.groups.all.0.id == 1 %}
+                        <ul>
+                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=2 %}">Купить базовую?</a>
+                        </ul>
+                    {% elif user.groups.all.0.id == 2 %}
+                        <ul>
+                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+                        </ul>
+                    {% endif %}
+                </div>
+                <div>
+                    {% if user.groups.all.0.id > 1 %}
+                        <ul>
+                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=1 %}">
+                                Отказаться от платной подписки
+                            </a>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

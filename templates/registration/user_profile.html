@@ -19,12 +19,15 @@
                 <div>
                     {% if user.groups.all.0.id == 1 %}
                         <ul>
-                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
-                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=2 %}">Купить базовую?</a>
+                            <li class="person-li">
+                                <a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+                            <li class="person-li">
+                                <a class="page-a" href="{% url 'buy_sub' type_sub=2 %}">Купить базовую?</a>
                         </ul>
                     {% elif user.groups.all.0.id == 2 %}
                         <ul>
-                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
+                            <li class="person-li">
+                                <a class="page-a" href="{% url 'buy_sub' type_sub=3 %}">Купить СУПЕР?</a>
                         </ul>
                     {% endif %}
                 </div>

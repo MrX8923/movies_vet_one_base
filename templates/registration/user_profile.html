@@ -34,9 +34,10 @@
                 <div>
                     {% if user.groups.all.0.id > 1 %}
                         <ul>
-                            <li class="person-li"><a class="page-a" href="{% url 'buy_sub' type_sub=1 %}">
-                                Отказаться от платной подписки
-                            </a>
+                            <li class="person-li">
+                                <a class="page-a" href="{% url 'buy_sub' type_sub=1 %}">
+                                    Отказаться от платной подписки
+                                </a>
                         </ul>
                     {% endif %}
                 </div>

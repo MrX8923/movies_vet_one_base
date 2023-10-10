@@ -113,9 +113,20 @@ def make_db(request):
     return render(request, 'index.html')
 
 
-class DetailUser(generic.DetailView):
-    model = User
-    template_name = 'registration/user_profile.html'
-    extra_context = {'title': 'Профиль'}
-    context_object_name = 'user'
+# class DetailUser(generic.DetailView):
+#     model = User
+#     template_name = 'registration/user_profile.html'
+#     extra_context = {'title': 'Профиль'}
+#     context_object_name = 'user'
 
+
+class UserView(generic.TemplateView):
+    template_name = 'registration/user_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'user': self.request.user,
+            'title': self.request.user.username.title()
+        })
+        return context

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from movies.views import *
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +34,5 @@ urlpatterns = [
     path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie'),
     path('make_db/', make_db, name='make_db'),
     path('buy_sub/<int:type_sub>', buy_sub, name='buy_sub'),
-    path('profile/<int:pk>/<str:user>', DetailUser.as_view(), name='user_profile'),
+    path('profile/', UserView.as_view(), name='user_profile'),
 ]

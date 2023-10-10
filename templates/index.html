@@ -30,7 +30,7 @@
                             <a class="nav-link active menu-a" href="{% url 'login' %}">Log in</a>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link active menu-a" href="{% url 'user_profile' pk=user.id user=user %}">
+                            <a class="nav-link active menu-a" href="{% url 'user_profile' %}">
                                 {{ user.username }}
                             </a>
                         <li class="nav-item">

@@ -34,5 +34,5 @@ urlpatterns = [
     path('subsription/see/<int:id1>/<int:id2>/<int:id3>', see_movie, name='see_movie'),
     path('make_db/', make_db, name='make_db'),
     path('buy_sub/<int:type_sub>', buy_sub, name='buy_sub'),
-    path('profile/', UserView.as_view(), name='user_profile'),
+    path('profile/', TemplateView.as_view(template_name='registration/user_profile.html'), name='user_profile'),
 ]

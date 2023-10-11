@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block title %}
+    {{ user.username.title }}
+{% endblock %}
+
 {% block content %}
     <div class="person-cont">
         <h2>Привет, {{ user.username.title }}!</h2>

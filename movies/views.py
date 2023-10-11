@@ -120,13 +120,13 @@ def make_db(request):
 #     context_object_name = 'user'
 
 
-class UserView(generic.TemplateView):
-    template_name = 'registration/user_profile.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'user': self.request.user,
-            'title': self.request.user.username.title()
-        })
-        return context
+# class UserView(generic.TemplateView):
+#     template_name = 'registration/user_profile.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context.update({
+#             'user': self.request.user,
+#             'title': self.request.user.username.title()
+#         })
+#         return context

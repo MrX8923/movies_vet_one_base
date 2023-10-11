@@ -16,10 +16,6 @@ class SingUpForm(UserCreationForm):
         field_classes = {'email': MyMailField}
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'arkasha2000'}),
-            'password1': forms.PasswordInput(attrs={'autocomplete': 'new-password',
-                                                    'placeholder': '********'}),
-            'password2': forms.PasswordInput(attrs={'autocomplete': 'new-password',
-                                                    'placeholder': '********'}),
             'email': forms.EmailInput(attrs={'placeholder': 'arkasha@mail.ru'}),
             'first_name': forms.TextInput(attrs={'placeholder': 'Аркадий'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Аркадьев'})

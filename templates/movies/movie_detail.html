@@ -7,12 +7,14 @@
         <div class="col card" style="
                 background-image: url('{% static movie.poster %}');
                 background-repeat: no-repeat;
-                max-width: 300px">
+                max-width: 300px;
+                max-height: 450px">
         </div>
         <div class="col p-3">
             <h2>"{{ movie.title}}"</h2>
             <h3>Режиссер: {{ movie.director }}</h3>
-            <h3>Год: {{ movie.year }}</h3>
+            <h4>Год: {{ movie.year }}</h4>
+            <p>Описание: {{ movie.summary }}</p>
             <h3>Актеры:</h3>
             {% for actor in movie.actors.all %}
                 <a class="person-a" href="{% url 'info_actor' pk=actor.id actor=actor %}">

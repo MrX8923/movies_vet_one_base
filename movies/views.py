@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
+from django.shortcuts import *
 from django.views import generic
 from django.contrib.auth.models import User, Group
 from .db_maker import *

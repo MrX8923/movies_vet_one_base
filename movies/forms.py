@@ -7,7 +7,6 @@ class MyMailField(forms.EmailField):
     def __init__(self, **kwargs):
         super(MyMailField, self).__init__(**kwargs)
         self.required = True
-        self.strip = True
 
 
 class SingUpForm(UserCreationForm):
@@ -25,3 +24,10 @@ class SingUpForm(UserCreationForm):
             'first_name': forms.TextInput(attrs={'placeholder': 'Аркадий'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Аркадьев'})
         }
+
+    def __init__(self, *args, **kwargs):
+        super(SingUpForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].widget = forms.PasswordInput(attrs={'autocomplete': 'new-password',
+                                                                     'placeholder': '********'})
+        self.fields['password2'].widget = forms.PasswordInput(attrs={'autocomplete': 'new-password',
+                                                                     'placeholder': '********'})

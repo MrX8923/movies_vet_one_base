@@ -1,9 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
 
-{% block menu %}
-
-{% endblock %}
 {% block content %}
     <h2>Enter</h2>
     <form action="{% url 'login' %}" method="post">
@@ -18,6 +15,8 @@
                 <td>{{ form.password }}</td>
             </tr>
         </table>
-        <button type="submit">SEND</button>
+        <button class="see-button"><a class="person-a" href="{% url 'registration' %}">Регистрация</a></button>
+        <button class="see-button" type="submit">Войти</button>
     </form>
+
 {% endblock %}

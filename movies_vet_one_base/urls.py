@@ -37,4 +37,5 @@ urlpatterns = [
     path('profile/',
          TemplateView.as_view(template_name='registration/user_profile.html'),
          name='user_profile'),
+    path('user/registration', registration, name='registration')
 ]

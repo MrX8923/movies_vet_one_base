@@ -178,3 +178,24 @@ input {
   border: red double 3px;
   box-shadow: red 0 0 20px;
 }
+
+.errorlist {
+  margin: 0;
+  padding: 0;
+  max-width: 50%;
+  font-size: small;
+  text-align: left;
+  text-align: -webkit-left;
+  text-align: -moz-left;
+  list-style-type: none;
+}
+
+.errors input {
+  border-color: red;
+  background-color: #ffb3b3;
+}
+
+.errors label{
+  color: #ff0000;
+  font-size: x-large;
+}

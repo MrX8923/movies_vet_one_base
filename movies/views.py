@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.views import generic
-from .models import *
 from django.contrib.auth.models import User, Group
-from django.shortcuts import get_object_or_404
 from .db_maker import *
+from .forms import *
+from django.contrib.auth import authenticate, login
 
 
 def index(request):
@@ -130,3 +130,20 @@ def make_db(request):
 #             'title': self.request.user.username.title()
 #         })
 #         return context
+
+
+def registration(request):
+    if request.POST:
+        form = SingUpForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            Group.objects.get(id=1).user_set.add(new_user)
+            login(request, new_user)
+            return redirect('user_profile')
+    else:
+        form = SingUpForm()
+    data = {
+        'title': 'Регистрация',
+        'form': form
+    }
+    return render(request, 'registration/user_registration.html', context=data)

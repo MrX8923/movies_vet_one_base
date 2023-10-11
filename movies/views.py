@@ -154,6 +154,7 @@ class Registration(generic.FormView):
     form_class = SingUpForm
     template_name = 'registration/user_registration.html'
     success_url = reverse_lazy('user_profile')
+    extra_context = {'title': 'Регистрация'}
 
     def form_valid(self, form):
         new_user: User = form.save()

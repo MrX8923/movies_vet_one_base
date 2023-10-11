@@ -158,6 +158,6 @@ class Registration(generic.FormView):
 
     def form_valid(self, form):
         new_user: User = form.save()
-        get_object_or_404(Group, name='auth_group').user_set.add(new_user)
+        get_object_or_404(Group, pk=1).user_set.add(new_user)
         login(self.request, new_user)
         return super(Registration, self).form_valid(form)

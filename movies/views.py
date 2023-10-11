@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib.auth.models import User, Group
 from .db_maker import *
 from .forms import *
+from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login
 
 
@@ -147,3 +148,15 @@ def registration(request):
         'form': form
     }
     return render(request, 'registration/user_registration.html', context=data)
+
+
+class Registration(generic.FormView):
+    form_class = SingUpForm
+    template_name = 'registration/user_registration.html'
+    success_url = reverse_lazy('user_profile')
+
+    def form_valid(self, form):
+        new_user: User = form.save()
+        Group.objects.get(id=1).user_set.add(new_user)
+        login(self.request, new_user)
+        return super(Registration, self).form_valid(form)

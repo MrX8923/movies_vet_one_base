@@ -110,7 +110,7 @@ def buy_sub(request, type_sub):
 
 def make_db(request):
     get_movies()
-    return render(request, 'index.html')
+    return render(request, 'index.html', context={'mark': True})
 
 
 # class DetailUser(generic.DetailView):

@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from .models import *
 from .image_downloader import *
 
-TIME_PAUSE = 2
+TIME_PAUSE = 3
 MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
           'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
 
@@ -16,7 +16,7 @@ MONTHS = ['января', 'февраля', 'марта', 'апреля', 'ма�
 def driver_prepare():
     print('*Запускаем браузер FireFox в фоновом режиме.')
     options = Options()
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
     print('*Браузер открыт в фоновом режиме.')
     return driver
@@ -75,7 +75,7 @@ def get_movies():
         for i in range(1, 2):
             driver.get('https://www.kinopoisk.ru/lists/movies/top250/?page=' + str(i))
             time.sleep(5)
-            for n in range(0, 30):
+            for n in range(0, 35):
                 movies = driver.find_elements(By.CLASS_NAME, 'styles_root__ti07r')
                 m = movies[n]
                 movie_title = m.find_element(By.CLASS_NAME, 'styles_mainTitle__IFQyZ')
@@ -90,8 +90,11 @@ def get_movies():
                         ' • ')
                     country = info[0]
                     genre = info[1].split('  ')[0]
-                    director = {'firstname': info[1].split(': ')[1].split(' ')[0],
-                                'lastname': info[1].split(': ')[1].split(' ')[1]}
+                    f_name = info[1].split(': ')[1].split(' ')[0]
+                    l_name = info[1].split(': ')[1].split(' ')[1]
+
+                    director = {'firstname': f_name,
+                                'lastname': l_name}
                     rating = m.find_element(By.CLASS_NAME, 'styles_kinopoiskValueBlock__qhRaI').text
                     print(f'Первичные данные: {country}, {genre}, {director}, {rating}')
 
@@ -108,11 +111,11 @@ def get_movies():
                     image_name = title
                     image_name = download_image_from_url(url, IMAGE_DIR, image_name)
                     poster = f'{IMAGE_DIR_STATIC}/{image_name}.jpg'
-                    print('Получил остальные данные и постер')
 
                     # поиск актёров
                     actors = []
                     i = 0
+                    time.sleep(TIME_PAUSE)
                     while True:
                         actor_li = driver.find_elements(By.CLASS_NAME, 'styles_list___ufg4')[0].find_elements(
                             By.TAG_NAME, 'li')
@@ -162,6 +165,20 @@ def get_movies():
                         i += 1
                         if i >= len(actor_li):
                             break
+
+                    # идем за портретом директора
+                    movie_card = driver.find_elements(By.CLASS_NAME, 'styles_rowDark__ucbcz')
+                    for elem in movie_card:
+                        if 'Режиссер' in elem.text:
+                            elem.find_element(By.CLASS_NAME, 'styles_linkDark__7m929').click()
+                            time.sleep(TIME_PAUSE)
+                            break
+                    url = driver.find_element(By.CLASS_NAME, 'image').get_attribute('src')
+                    download_image_from_url(url, PORTRAIT_DIR, f'{f_name + "_" + l_name}')
+                    director.update({'portrait': f'{PORTRAIT_DIR_STATIC}/{f_name + "_" + l_name}.jpg'})
+                    driver.back()
+                    time.sleep(TIME_PAUSE)
+                    print('Получил остальные данные и постер')
 
                     driver.back()
                     movie = {'title': title,

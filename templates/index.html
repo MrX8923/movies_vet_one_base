@@ -51,5 +51,8 @@
     <h2>На сайте {{ free_count }} фильмов бесплатно</h2>
     {% if user.is_superuser %}
         <a href="{% url 'make_db' %}"><button class="admin-button">Загрузить фильмы в базу сайта</button></a>
+        {% if mark %}
+            <h2>База загружена!</h2>
+        {% endif %}
     {% endif %}
 {% endblock content %}

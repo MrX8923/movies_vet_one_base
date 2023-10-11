@@ -113,6 +113,22 @@ input {
   width: 300px;
 }
 
+.see-button {
+  margin-top: 0.5%;
+  background-color: rgba(153, 153, 153, 0.2);
+  color: white;
+  border: white double 3px;
+  border-radius: 10px;
+  transition: linear 0.6s;
+}
+
+.see-button:hover {
+  scale: 1.05;
+  color: goldenrod;
+  border: goldenrod double;
+  box-shadow: goldenrod 0 0 20px;
+}
+
 .person-a, .page-a {
   text-decoration: none;
   color: goldenrod;

@@ -10,9 +10,9 @@
             {% for movie in movies %}
                 <li style="display: inline-block">
                     <a href="{{ movie.get_absolute_url }}">
-                        <div class="card" style="
-                            background-image: url('{% static movie.poster %}');
-                            background-repeat: no-repeat"></div>
+                        <div class="card" style="background-image: url('{% static movie.poster %}');
+                                                 background-repeat: no-repeat">
+                        </div>
                     </a>
                     <p style="text-align: center">{{ movie.genre  }}</p>
                 </li>

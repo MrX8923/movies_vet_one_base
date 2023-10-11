@@ -7,19 +7,12 @@
         <h2 class="gold">{{ subscription.name }}</h2>
         <div class="white">
         {% for movie in subscription.movie_set.all %}
-            <div class="card" style="
-                    background-image: url('{% static movie.poster %}');
-                    background-repeat: no-repeat">
-                {% if not user.username %}
-                    <a href="{% url 'see_movie' movie.id subscription.id 0 %}">
-                        <button class="see-button">Смотреть</button>
-                    </a>
-                    {% else %}
-                    <a href="{% url 'see_movie' movie.id subscription.id user.id %}">
-                        <button class="see-button">Смотреть</button>
-                    </a>
-                {% endif %}
-            </div>
+            <a href="{{ movie.get_absolute_url }}">
+                <div class="card" style="
+                        background-image: url('{% static movie.poster %}');
+                        background-repeat: no-repeat">
+                </div>
+            </a>
         {% endfor %}
         </div>
     {% endfor %}

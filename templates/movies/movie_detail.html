@@ -19,6 +19,16 @@
                     {{ actor }}
                 </a>
             {% endfor %}
+            <br>
+            {% if not user.username %}
+                    <a href="{% url 'see_movie' movie.id movie.subscription.id 0 %}">
+                        <button class="see-button">Смотреть</button>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'see_movie' movie.id movie.subscription.id user.id %}">
+                        <button class="see-button">Смотреть</button>
+                    </a>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

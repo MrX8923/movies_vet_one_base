@@ -150,7 +150,7 @@ def registration(request):
     return render(request, 'registration/user_registration.html', context=data)
 
 
-class Registration(generic.FormView):
+class RegistrationView(generic.FormView):
     form_class = SingUpForm
     template_name = 'registration/user_registration.html'
     success_url = reverse_lazy('user_profile')
@@ -160,4 +160,4 @@ class Registration(generic.FormView):
         new_user: User = form.save()
         get_object_or_404(Group, pk=1).user_set.add(new_user)
         login(self.request, new_user)
-        return super(Registration, self).form_valid(form)
+        return super(RegistrationView, self).form_valid(form)

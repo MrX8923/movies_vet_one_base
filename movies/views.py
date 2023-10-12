@@ -138,7 +138,7 @@ def registration(request):
         form = SingUpForm(request.POST)
         if form.is_valid():
             new_user: User = form.save()
-            Group.objects.get(id=1).user_set.add(new_user)
+            get_object_or_404(Group, pk=1).user_set.add(new_user)
             login(request, new_user)
             return redirect('user_profile')
     else:

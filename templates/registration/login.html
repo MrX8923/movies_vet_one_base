@@ -14,6 +14,9 @@
                 <td>{{ form.password.label_tag }}</td>
                 <td>{{ form.password }}</td>
             </tr>
+            <tr>
+                <td><a class="person-a" href="{% url 'password_reset' %}">Забыли пароль?</a></td>
+            </tr>
         </table>
         <button class="see-button"><a class="person-a" href="{% url 'registration' %}">Регистрация</a></button>
         <button class="see-button" type="submit">Войти</button>
